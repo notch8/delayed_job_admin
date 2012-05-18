@@ -48,7 +48,7 @@
   </tbody>
 </table>
 
-<%= will_paginate @jobs %>
+<%= paginate @jobs %>
 
 <p>
 <%= if !@status.nil? && !@status.empty? then "Delayed_job service status :#{@status}" end %>
