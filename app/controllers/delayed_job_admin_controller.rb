@@ -72,9 +72,9 @@ class DelayedJobAdminController < ApplicationController
 
   def load_by_id
     if mongoid?
-      Delayed::Job.where(failed_at: nil).find(params[:job_id])
+      Delayed::Job.find(params[:job_id])
     else
-      Delayed::Job.where("failed_at IS NULL").find_by_id(params[:job_id])
+      Delayed::Job.find_by_id(params[:job_id])
     end
   end
 
