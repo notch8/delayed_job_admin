@@ -43,8 +43,7 @@ class DelayedJobAdminController < ApplicationController
 
   def delete
     if job = Delayed::Job.find(params[:id])
-      job.attempts = 10
-      job.save
+      job.destroy
     end
     redirect_to :action => 'index'
   end

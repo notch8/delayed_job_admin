@@ -32,7 +32,14 @@
         <td><%= job.locked_by || '-' %></td>
         <td><%= format_time(job.created_at) %></td>
         <td><%= format_time(job.updated_at) %></td>
-        <td class="actions"><% if job.failed_at %><%= link_to "retry", retry_job_delayed_job_admin_path(:job_id => job.id) %><% else %><%= link_to "run now", run_job_now_delayed_job_admin_path(:job_id => job.id) %><% end %></td>
+        <td class="actions">
+          <% if job.failed_at %>
+              <%= link_to "retry", retry_job_delayed_job_admin_path(:job_id => job.id) %>
+              <%= link_to "delete", delete_job_delayed_job_admin_path(:id => job.id) %>
+            <% else %>
+              <%= link_to "run now", run_job_now_delayed_job_admin_path(:job_id => job.id) %>
+          <% end %>
+        </td>
       </tr>
       <tr class="job-details" id="job-details-<%= job.id %>">
         <td colspan="11">
