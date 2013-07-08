@@ -36,10 +36,10 @@
       </tr>
       <tr class="job-details" id="job-details-<%= job.id %>">
         <td colspan="11">
-          <p><pre><%= job.to_yaml %></pre></p>
+          <p><pre><%= job.to_yaml(line_width: -1).gsub("\\n", "\n")%></pre></p>
           <p>
             <pre>
-            <%= job.last_error.to_s.gsub("\\n", "\n") %>
+              <%= job.last_error.to_s.gsub("\\n", "\n") %>
             </pre>
           </p>
         </td>
